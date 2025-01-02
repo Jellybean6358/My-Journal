@@ -49,7 +49,7 @@ class _HomeScreenState extends State<HomeScreen>
 
   @override
   Widget build(BuildContext context) {
-    final theme=Theme.of(context);
+    final theme = Theme.of(context);
     final journalProvider = Provider.of<JournalProvider>(context);
     final entries = journalProvider.entries
         .where((entry) =>
@@ -78,31 +78,48 @@ class _HomeScreenState extends State<HomeScreen>
           PopupMenuButton<String>(
             itemBuilder: (context) => [
               const PopupMenuItem<String>(
-                value: 'Set1',
+                value: '1',
                 child: Text('Dark theme'),
               ),
               const PopupMenuItem<String>(
-                value: 'Set2',
+                value: '2',
                 child: Text('Null'),
+              ),
+              const PopupMenuItem<String>(
+                value: '3',
+                child: Text('Layout'),
+              ),
+              const PopupMenuItem<String>(
+                value: '4',
+                child: Text('Refresh🔁'),
               ),
             ],
             onSelected: (value) {
               print('Selected:$value');
+              switch(value){
+                case '1':break;
+                case '2':break;
+                case '3':setState(() {
+                  _isGLay = !_isGLay;
+                });
+                  break;
+                case '4':break;
+                default:break;
+              }
             },
             icon: Icon(
               Icons.settings,
               color: theme.colorScheme.onSurface,
             ),
           ),
-
           IconButton(
-              onPressed: (){
-                print('Refreshingggggg!!!!...');
-                //journalProvider.fetchData();
-              },
+            onPressed: () {
+              print('Refreshingggggg!!!!...');
+              //journalProvider.fetchData();
+            },
             icon: Icon(
-                Icons.refresh,
-                color:theme.colorScheme.onSurface,
+              Icons.refresh,
+              color: theme.colorScheme.onSurface,
             ),
           ),
         ],
