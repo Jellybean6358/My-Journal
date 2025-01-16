@@ -1,6 +1,6 @@
 # journal2
 
-A new Flutter project.
+A Beginning of way of saving our moments: Happy or Sad.
 
 ## Getting Started
 
